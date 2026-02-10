@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Main {
@@ -27,10 +28,38 @@ public class Main {
 
                 case 1:
                     // TODO: Read input and add Book
+                    System.out.println("book name: ");
+                    String title = scanner.nextLine();
+                    System.out.println("author: ");
+                    String author = scanner.nextLine();
+                    System.out.println("year: ");
+                    int year = scanner.nextInt();
+                    scanner.nextLine();
+
+                    Book newBook = new Book(title, author, year);
+
+                    library.addBook(newBook);
                     break;
+
 
                 case 2:
                     // TODO: Read input and add EBook
+                    System.out.println("book name: ");
+                    String Etitle = scanner.nextLine();
+
+                    System.out.println("author: ");
+                    String Eauthor = scanner.nextLine();
+
+                    System.out.println("year: ");
+                    int Eyear = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.println("book size: ");
+                    double Esize = scanner.nextDouble();
+
+                    EBook newEbook = new EBook(Etitle, Eauthor, Eyear, Esize);
+
+                    library.addBook(newEbook);
                     break;
 
                 case 3:
@@ -39,14 +68,27 @@ public class Main {
 
                 case 4:
                     // TODO: Search book
+                    System.out.println("title: ");
+                    String Stitle = scanner.nextLine();
+
+                    System.out.println(library.searchByTitle(Stitle));
                     break;
 
                 case 5:
                     // TODO: Borrow book
+                    System.out.println("title: ");
+                    String Btitle = scanner.nextLine();
+
+                    library.borrowBook(Btitle);
                     break;
+
 
                 case 6:
                     // TODO: Return book
+                    System.out.println("title: ");
+                    String Rtitle = scanner.nextLine();
+
+                    library.returnBook(Rtitle);
                     break;
 
                 case 7:
@@ -55,6 +97,7 @@ public class Main {
 
                 default:
                     System.out.println("Invalid option!");
+                    break;
             }
 
         } while (choice != 7);
